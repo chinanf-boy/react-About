@@ -44,28 +44,26 @@ class App extends Component {
       author = "",
       bookname = ""
     } = item;
+
     const {searchItem} = this.state;
-    let Ischoice = true;
-    const searchItems = searchItem.split(' ');
+    const searchItems = searchItem
+      .trim()
+      .split(' ');
+
+    let Ischoice = 0;
 
     if (searchItem) {
 
       searchItems.map((item, index) => {
-
-
-        if (item) {
-                  console.log(item);
-          if (author.toLowerCase().indexOf(item.toLowerCase()) >= 0 || bookname.toLowerCase().indexOf(item.toLowerCase()) >= 0) {
-            Ischoice = true;
-          } else {
-            Ischoice = false;
-          }
-           console.log(Ischoice);
+        if (author.toLowerCase().indexOf(item.toLowerCase()) >= 0 || bookname.toLowerCase().indexOf(item.toLowerCase()) >= 0) {
+          Ischoice++;
+        } else {
+          Ischoice = 0;
         }
-
       })
+      return Ischoice === searchItems.length;
     }
-    return Ischoice;
+    return true;
 
   }
   componentDidMount() {
