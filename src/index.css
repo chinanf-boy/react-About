@@ -3,3 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.search{
+  margin: 12px;
+}
+
+.list{
+  margin: 12px auto 12px auto;
+  width: 95%;
+
+}
+
+@media screen and (min-width: 780px) {
+  .list{
+  width: 88%;
+  }
+}
