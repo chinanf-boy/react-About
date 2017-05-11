@@ -34,13 +34,27 @@ const Bookfooter = () => (
         <Paper style={style2} zDepth={1} circle={true}>
             <Bookwaiter />
         </Paper>
-        <Paper style={style} zDepth={5} circle={true}/>
+        <Paper style={style} zDepth={5} circle={true}>
+        <br/>
+        猪
+        <br/>
+        鼻
+        <br/>
+        子
+        </Paper>
         <Paper style={style3} zDepth={4} circle={true}>
             <Bookwaiter thickness="4"/>        </Paper>
         <Paper style={style3} zDepth={4} circle={true}>
             <Bookwaiter thickness="6"/></Paper>
             
-        <Paper style={style} zDepth={5} circle={true}/>
+        <Paper style={style} zDepth={5} circle={true}>
+        <br/>
+        猪
+         <br/>
+        鼻
+        <br/>
+        子
+        </Paper>
         <Paper style={style2} zDepth={1} circle={true}>
             <Bookwaiter thickness="8"/>
         </Paper>
