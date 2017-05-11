@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 
-import MUI from './MuiTheme/index'
-import BookLists from './Components/BookLists.react.js'
-import BookSearch from './Components/BookSearch.react.js'
+import MUI from './MuiTheme/index';
+import BookLists from './Components/BookLists.react.js';
+import BookSearch from './Components/BookSearch.react.js';
+import Bookfooter from './Components/Bookfooter.react.js';
+import Bookwaiter from './Components/Bookwaiter.react.js';
+
+import BookLiner from './Components/BookLiner.react.js';
+
 import axios from 'axios';
 
 import logo from './logo.svg';
 import './App.css';
+
+require('es6-promise').polyfill();
 
 class App extends Component {
   constructor(props) {
@@ -31,12 +38,16 @@ class App extends Component {
   }
   getComments() {
 
-    axios
+    this.serverRequest = axios
       .get('./api/comments.json')
       .then((response) => {
-        this.setState({comments: response.data});
-
-      });
+        if (this.unmounted) 
+          return;
+        
+        if (response.status === 200) 
+          this.setState({comments: response.data});
+        }
+      );
 
   }
   rightSearch(item) {
@@ -68,7 +79,10 @@ class App extends Component {
   }
   componentDidMount() {
 
-    this.getComments()
+    this.getComments();
+  }
+  componentWillUnmount() {
+    this.unmounted = true;
   }
   render() {
     const {searchItem, comments} = this.state;
@@ -79,7 +93,8 @@ class App extends Component {
           <h2>Welcome to BookLists</h2>
         </div>
         <MUI>
-          <div>
+          <div className="bookall">
+            <BookLiner></BookLiner>
             <BookSearch searchItem={searchItem} onChangeItem={this.onChangeItem}></BookSearch>
             {comments.length > 0
               ? comments.map(item => {
@@ -103,11 +118,13 @@ class App extends Component {
                     bookname={bookname}></BookLists>;
                 }
               })
-              : <span>
-                没有 书 简介</span>
+              : <Bookwaiter />
 }
+            <Bookfooter>
+            </Bookfooter>
           </div>
         </MUI>
+
       </div>
     );
   }

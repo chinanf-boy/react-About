@@ -1,0 +1,6 @@
+// 将设置放入此文件中以覆盖默认值和用户设置。
+{
+    "npm-intellisense.importES6": true,
+    "npm-intellisense.importDeclarationType": "const",
+    "npm-intellisense.scanDevDependencies": true
+}

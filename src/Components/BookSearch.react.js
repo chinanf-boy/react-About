@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 
 const BookSearch = ({ onChangeItem, searchItem }) => <div className="search">
-    <TextField hintText={ searchItem } floatingLabelText="查询作者/书名" onChange={ onChangeItem }/>
+    <TextField hintText={ searchItem } floatingLabelText="查询作者/书名 :(p k) " onChange={ onChangeItem }/>
     <span>--</span>
     <RaisedButton label="Search" primary={true} />
 </div>

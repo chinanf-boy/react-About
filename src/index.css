@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+.bookall{
+  background-color: rgba(193, 123, 126, 0.59);
+  padding: 1px;
+}
+
 .search{
   margin: 12px;
 }
