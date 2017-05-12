@@ -5,8 +5,10 @@ import BookLists from './Components/BookLists.react.js';
 import BookSearch from './Components/BookSearch.react.js';
 import Bookfooter from './Components/Bookfooter.react.js';
 import Bookwaiter from './Components/Bookwaiter.react.js';
-
 import BookLiner from './Components/BookLiner.react.js';
+
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 import axios from 'axios';
 
@@ -87,12 +89,13 @@ class App extends Component {
   render() {
     const {searchItem, comments} = this.state;
     return (
+      <Router>
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <h2>Welcome to BookLists</h2>
         </div>
-        <MUI>
+          <Route exact={true} path="/" render={() =>( <MUI>
           <div className="bookall">
             <BookLiner></BookLiner>
             <BookSearch searchItem={searchItem} onChangeItem={this.onChangeItem}></BookSearch>
@@ -111,21 +114,26 @@ class App extends Component {
                   return <BookLists
                     key={id}
                     author={author}
-                    date={date}
+                    date={id}
                     text={text}
                     Logoimg={Logoimg}
                     tags={tags}
-                    bookname={bookname}></BookLists>;
+                    bookname={bookname}>
+                    
+                    </BookLists>;
                 }
               })
               : <Bookwaiter />
-}
+          }
             <Bookfooter>
             </Bookfooter>
           </div>
         </MUI>
+        )} />
+          <Route path="/b/:bookid" render={({ match }) =><h1>bookid: { match.params.bookid }</h1>}/>
 
       </div>
+      </Router>
     );
   }
 }

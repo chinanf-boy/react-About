@@ -4,23 +4,34 @@ body {
   font-family: sans-serif;
 }
 
-.bookall{
+a:-webkit-any-link {
+  color: rgba(23, 69, 199, 0.78) !important;
+}
+
+.bookall {
   background-color: rgba(193, 123, 126, 0.59);
   padding: 1px;
 }
 
-.search{
+.search {
   margin: 12px;
 }
 
-.list{
+.list {
   margin: 12px auto 12px auto;
   width: 95%;
+}
 
+.anim{
+  margin: 3px;
+}
+
+.list:hover  .anim {
+  margin: 13px;
 }
 
 @media screen and (min-width: 780px) {
-  .list{
-  width: 88%;
+  .list {
+    width: 88%;
   }
 }
