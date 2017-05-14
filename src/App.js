@@ -95,7 +95,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h2>Welcome to BookLists</h2>
         </div>
-          <Route exact={true} path="/" render={() =>( <MUI>
+          <Route exact={true} path="/about/" render={() =>( <MUI>
           <div className="bookall">
             <BookLiner></BookLiner>
             <BookSearch searchItem={searchItem} onChangeItem={this.onChangeItem}></BookSearch>
@@ -130,7 +130,7 @@ class App extends Component {
           </div>
         </MUI>
         )} />
-          <Route path="/b/:bookid" render={({ match }) =><h1>bookid: { match.params.bookid }</h1>}/>
+          <Route path="/about/b/:bookid" render={({ match }) =><h1>bookid: { match.params.bookid }</h1>}/>
 
       </div>
       </Router>
