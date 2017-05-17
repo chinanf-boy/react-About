@@ -7,7 +7,7 @@ import Bookfooter from './Components/Bookfooter.react.js';
 import Bookwaiter from './Components/Bookwaiter.react.js';
 import BookLiner from './Components/BookLiner.react.js';
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 
 import axios from 'axios';
@@ -88,14 +88,7 @@ class App extends Component {
   }
   render() {
     const {searchItem, comments} = this.state;
-    return (
-      <Router>
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h2>Welcome to BookLists</h2>
-        </div>
-          <Route exact={true} path="/about/" render={() =>( <MUI>
+    const MUI1 = () =>( <MUI>
           <div className="bookall">
             <BookLiner></BookLiner>
             <BookSearch searchItem={searchItem} onChangeItem={this.onChangeItem}></BookSearch>
@@ -128,11 +121,22 @@ class App extends Component {
             <Bookfooter>
             </Bookfooter>
           </div>
-        </MUI>
-        )} />
+        </MUI>);
+        const IndexApp = () =>(
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo"/>
+          <h2>Welcome to BookLists</h2>
+        </div>
+        );
+    return (
+      <Router>
+        <div className="App">
+        <Route path="/" component={IndexApp} />
+          <Route exact path="/about" component={MUI1} />
           <Route path="/about/b/:bookid" render={({ match }) =><h1>bookid: { match.params.bookid }</h1>}/>
+         <Redirect from="/" to="/about"></Redirect>
 
-      </div>
+        </div>
       </Router>
     );
   }

@@ -70,7 +70,7 @@ const BookLists = ({
                 avatar={Logoimg}
                 actAsExpander={true}
                 showExpandableButton={true}/>
-        <Link to={`/b/${date}`}>
+        <Link to={`/about/b/${date}`}>
         <CardTitle title={bookname} subtitle="Card subtitle"/>
         </Link>
         
